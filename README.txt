@@ -31,6 +31,7 @@ git clone git@github.com:t-tang-rfc/qt-ros-sim.git
 === Build the package
 
 cd JOY-OF-ROS
+source /opt/ros/noetic/setup.bash
 catkin_make
 source devel/setup.bash
 
@@ -60,6 +61,11 @@ When you play with the joystick, you should see the following messages in the te
 [INFO] [1749533256.670615996]: Joy callback called!
 ...
 +++
+
+=== Note
+
+One can use `jstest /dev/input/js0` to check if the joystick is working properly, and find out the mapping of the joystick buttons and axes.
+The output of `jstest` is different from the output of `rostopic echo /joy`, as `jstest` shows the raw input from the joystick, while `rostopic echo /joy` shows the processed data---which is scaled to [-1, 1] for axes and {0, 1} for buttons---in a ROS message format.
 
 === Reference
 
